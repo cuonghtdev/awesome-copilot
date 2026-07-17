@@ -3,7 +3,7 @@ title: 'Copilot Configuration Basics'
 description: 'Learn how to configure GitHub Copilot at user, workspace, and repository levels to optimize your AI-assisted development experience.'
 authors:
   - GitHub Copilot Learning Hub Team
-lastUpdated: 2026-07-13
+lastUpdated: 2026-07-17
 estimatedReadingTime: '10 minutes'
 tags:
   - configuration
@@ -743,6 +743,8 @@ copilot --plan          # start in plan mode (propose without executing)
 ```
 
 This is useful in scripts or CI pipelines where you want the CLI to immediately begin working in a specific mode without an interactive prompt.
+
+> **Plan mode safety (v1.0.71+)**: Plan mode now **hard-blocks** any built-in tool calls that would modify the workspace — the agent can no longer edit files or run mutating shell commands while planning. Built-in write operations (such as opening a pull request) are also blocked. MCP tools and external tools are still allowed. This ensures plan mode truly stays non-destructive until you explicitly switch modes.
 
 The `--max-autopilot-continues` flag controls how many times Copilot can automatically continue in autopilot mode before pausing for confirmation. The default is 5:
 
